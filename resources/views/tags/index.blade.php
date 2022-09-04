@@ -38,7 +38,7 @@
                         <tr>
                             <th><div class="alert alert-danger" class="text-center">No Tags</div><th>
                         </tr>
-                        <a href="{{ route('tag.create') }}" class="btn btn-success">Create</a>
+
                       @endif
 
                     </table>

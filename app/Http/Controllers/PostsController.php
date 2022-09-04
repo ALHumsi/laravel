@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 
 class PostsController extends Controller
 {
@@ -25,7 +26,21 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories', Category::all());
+
+        $categories = Category::all();
+        if ($categories->count() == 0) {
+            return redirect()->route('category.create');
+        }
+
+
+        $tags = Tag::all();
+        if ($tags->count() == 0) {
+            return redirect()->route('tag.create');
+        }
+
+            return view('posts.create')->with('categories', $categories)->with('tags', $tags);
+
+
     }
 
     /**
@@ -37,10 +52,11 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'content' => 'required',
-            'category_id' => 'required',
-            "featured" => 'file|mimes:jpg,jpeg,png,gif|max:1024'
+            "title" => "required",
+            "content" => "required",
+            "category_id" => "required",
+            "featured" => "file|mimes:jpg,jpeg,png,gif|max:1024",
+            "tags" => "required"
         ]);
 
         $featured = $request->featured;
@@ -63,7 +79,11 @@ class PostsController extends Controller
 
         ]);
 
+        $post->tags()->attach($request->tags);
+
         return redirect()->route('posts');
+
+
     }
 
     /**

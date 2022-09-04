@@ -42,6 +42,19 @@
                           <label for="content">Description</label><br>
                           <textarea name="content"  cols="89" rows="10"></textarea>
                         </div>
+                        <!-- Check Box -->
+                        <label>Tags</label>
+                            @foreach ($tags as $tag)
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                {{ $tag->tag }}
+                                </label>
+                            </div>
+
+                            @endforeach
+                          <!-- End Check Box -->
                         <div class="form-group">
                           <label for="featured">Photo</label>
                           <input type="file" class="form-control" name="featured">

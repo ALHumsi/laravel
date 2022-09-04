@@ -48,4 +48,11 @@ Route::group(['prefix' => 'user' ,'middleware' => 'auth'], function () {
     Route::post('/tag/update/{id}', 'TagController@update')->name('tag.update');
     Route::get('/tag/delete/{id}', 'TagController@destroy')->name('tag.delete');
 
+
 });
+
+Route::get('/abd', function(){
+
+    return App\Post::find(2)->category;
+
+})->name('abdo');

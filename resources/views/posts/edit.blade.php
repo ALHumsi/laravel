@@ -29,7 +29,17 @@
                           <label for="category">Category</label>
                           <select type="text" class="form-control" name="category_id">
                             @foreach ($categories as $category)
+
+                            @if ($category->id == $posts->category_id)
+
+                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+
+                            @else
+
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
+
+                            @endif
+
                             @endforeach
                           </select>
 
@@ -42,6 +52,24 @@
                           <label for="content">Description</label><br>
                           <textarea name="content"  cols="89" rows="10"> {{ $posts->content }} </textarea>
                         </div>
+                        @foreach ($tags as $tag)
+
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                            @foreach ($posts->tags as $ta)
+                            @if ($tag->id == $ta->id)
+                                checked
+                            @endif
+
+                            @endforeach
+                            >
+                            {{ $tag->tag }}
+                            </label>
+                        </div>
+
+                        @endforeach
                         <div class="form-group">
                           <label for="featured">Photo</label>
                           <input type="file" class="form-control" name="featured">

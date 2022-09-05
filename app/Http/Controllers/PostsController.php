@@ -106,7 +106,7 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post  = Post::find($id);
-        return view('posts.edit')->with('posts', $post)->with('categories', Category::all());
+        return view('posts.edit')->with('posts', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**

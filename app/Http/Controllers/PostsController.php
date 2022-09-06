@@ -147,6 +147,8 @@ class PostsController extends Controller
 
             $post->save();
 
+            $post->tags()->sync($request->tags);
+
             return redirect()->route('posts');
 
     }

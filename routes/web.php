@@ -49,10 +49,21 @@ Route::group(['prefix' => 'user' ,'middleware' => 'auth'], function () {
     Route::get('/tag/delete/{id}', 'TagController@destroy')->name('tag.delete');
 
 
+
+    //ROUTES FOR TAGS
+    Route::get('/users', 'UsersController@index')->name('users');
+    Route::get('/users/admin/{id}', 'UsersController@admin')->name('users.admin');
+    Route::get('/users/notadmin/{id}', 'UsersController@notadmin')->name('users.not.admin');
+    Route::get('/users/create', 'UsersController@create')->name('users.create');
+    Route::post('/users/store', 'UsersController@store')->name('users.store');
+    Route::get('/users/delete/{id}', 'UsersController@destroy')->name('users.delete');
+
+
+
 });
 
 Route::get('/abd', function(){
 
-    return App\Post::find(2)->category;
+    return App\User::find(1)->profile;
 
 })->name('abdo');

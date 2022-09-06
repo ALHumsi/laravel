@@ -30,6 +30,19 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        User
+                      </a>
+                      <div class="dropdown-menu" style="background-color: #C7EED8">
+                        <a class="dropdown-item" href="{{ route('users') }}">Users</a>
+                        <a class="dropdown-item" href="{{ route('users.create') }}">Create users</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('post.trashed') }}">Posts Soft Deleted</a>
+                      </div>
+                    </li>
+                  </ul>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                         Posts
                       </a>
                       <div class="dropdown-menu" style="background-color: #C7EED8">
